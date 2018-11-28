@@ -24,7 +24,7 @@ var org = nforce.createConnection({
 
 org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, function(err) {
 
-  if(err) return console.log(err);
+  if(err) return {console.log(err), console.log('hello')}
   if(!err) {
     console.log('*** Successfully connected to Salesforce ***');
     // add any logic to perform after login
