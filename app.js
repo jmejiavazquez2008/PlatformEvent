@@ -22,7 +22,7 @@ var org = nforce.createConnection({
   environment: config.ENVIRONMENT  // optional, sandbox or production, production default
 });
 
-org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, function(err, oauth) {
+org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, function(err) {
 
   if(err) return console.log(err);
   if(!err) {
