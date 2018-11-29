@@ -22,7 +22,7 @@ var org = nforce.createConnection({
   environment: 'sandbox'
 });
 var oauth;
-org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password: 'Interscope_2008' }, function(err, res) {
+org.authenticate({ username: 'jmejiavazquez2@huronconsultinggroup.com', password: 'Interscope_2008' }, function(err, res) {
 
   if(err) return console.log(err);
   if(!err) {
