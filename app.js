@@ -33,7 +33,7 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
   // subscribe to platform event
 //     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
 //         console.log(message);
-    });
+//    });
   // subscribe to a pushtopic
 //   var str = org.stream({ topic: config.PUSH_TOPIC, oauth: oauth });
 
