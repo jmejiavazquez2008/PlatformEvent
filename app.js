@@ -15,23 +15,24 @@ var io = require('socket.io')(server);
 var socket = io.sockets.on('connection', function (socket) { });
 
 var org = nforce.createConnection({
-  clientId: config.CLIENT_ID,
-  clientSecret: config.CLIENT_SECRET,
-  redirectUri: config.CALLBACK_URL + '/oauth/_callback',
+  clientId: '3MVG9Vik22TUgUpheZzEWUZ9QDnGeMnM8OGZBaUuUXdFQvKfvju4EoT9hS1jgUQpO9pbtIxk37dIIn0thfEMF',
+  clientSecret: '7984638764575275172',
+  redirectUri: 'http://localhost:3000/oauth/_callback',
   mode: 'multi',
-  environment: config.ENVIRONMENT  // optional, sandbox or production, production default
+  environment: 'sandbox'
 });
-
-org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, function(err) {
+var oauth;
+org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password: 'Interscope_2008' }, function(err, res) {
 
   if(err) return console.log(err);
   if(!err) {
+    oauth = res;
     console.log('*** Successfully connected to Salesforce ***');
     // add any logic to perform after login
   }
   // subscribe to platform event
-    org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
-        console.log(message);
+//     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
+//         console.log(message);
     });
   // subscribe to a pushtopic
 //   var str = org.stream({ topic: config.PUSH_TOPIC, oauth: oauth });
