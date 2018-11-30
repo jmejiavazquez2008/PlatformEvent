@@ -32,6 +32,7 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
   }
   var client = org.createStreamClient();
   var con = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth});
+  con.error
   con.on('data', function(data) {
     console.log('subscribed!');
     console.log(data);
