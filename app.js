@@ -18,11 +18,11 @@ var org = nforce.createConnection({
   clientId: '3MVG9Vik22TUgUpheZzEWUZ9QDnGeMnM8OGZBaUuUXdFQvKfvju4EoT9hS1jgUQpO9pbtIxk37dIIn0thfEMF',
   clientSecret: '7984638764575275172',
   redirectUri: 'http://localhost:3000/oauth/_callback',
-  mode: 'multi',
+  mode: 'single',
   environment: 'sandbox'
 });
 var oauth;
-org.authenticate({ username: 'jmejiavazquez2@huronconsultinggroup.com', password: 'Interscope_2008' }, function(err, res) {
+org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password: 'Interscope_2008', securityToken: 'JAiHQcwqEPBDHrK55V3vfEHTF' }, function(err, res) {
 
   if(err) return console.log(err);
   if(!err) {
