@@ -39,7 +39,7 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
 //   con.on('data', function(data) {
 //     console.log('subscribed!');
 //     console.log(data);
-  });
+ // });
   // subscribe to platform event
 //     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
 //         console.log(message);
