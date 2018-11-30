@@ -36,9 +36,9 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
 //   con.on('connect', function(){
 //     console.log('connected to topic: ' + 'Oppty_test__c');
 //   });
-//   con.on('error', function(error){
-//     console.log('error received from topic: ' + error);
-//   });
+  con.on('error', function(error){
+    console.log('error received from topic: ' + error);
+  });
 //   con.on('data', function(data) {
 //     console.log('received following from topic---');
 //     console.log(data);
