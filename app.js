@@ -31,9 +31,9 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
     // add any logic to perform after login
   }
   // subscribe to platform event
-//     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
-//         console.log(message);
-//    });
+    org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
+        console.log(message);
+   });
   // subscribe to a pushtopic
 //   var str = org.stream({ topic: config.PUSH_TOPIC, oauth: oauth });
 
