@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('./config.js');
 var nforce = require('nforce');
+var faye = require('faye');
 
 var routes = require('./routes/index');
 
@@ -25,15 +26,21 @@ var oauth;
 org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password: 'Interscope_2008', securityToken: 'JAiHQcwqEPBDHrK55V3vfEHTF' }, function(err, res) {
 
   if(err) return console.log(err);
+  oauth = res;
   if(!err) {
-    oauth = res;
     console.log('*** Successfully connected to Salesforce ***');
-    // add any logic to perform after login
   }
+  var client = org.createStreamClient();
+  console.log('subscribing to' + logs._topic);
+  var event = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth});
+  event.on('data', function(data) {
+    console.log('subscribed!');
+    console.log(data);
+  });
   // subscribe to platform event
-    org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
-        console.log(message);
-   });
+//     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
+//         console.log(message);
+//    });
   // subscribe to a pushtopic
 //   var str = org.stream({ topic: config.PUSH_TOPIC, oauth: oauth });
 
