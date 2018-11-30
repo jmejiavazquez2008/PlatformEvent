@@ -31,11 +31,14 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
     console.log('*** Successfully connected to Salesforce ***');
   }
   var client = org.createStreamClient();
-  var con = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth});
-  con.error
-  con.on('data', function(data) {
-    console.log('subscribed!');
-    console.log(data);
+  var con = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth, function(message) {
+    console.log("received Oppty_Test__c");
+    console.log(message);   
+  });
+//   con.error
+//   con.on('data', function(data) {
+//     console.log('subscribed!');
+//     console.log(data);
   });
   // subscribe to platform event
 //     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
