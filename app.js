@@ -31,8 +31,8 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
     console.log('*** Successfully connected to Salesforce ***');
   }
   var client = org.createStreamClient();
-  var event = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth});
-  event.on('data', function(data) {
+  var con = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth});
+  con.on('data', function(data) {
     console.log('subscribed!');
     console.log(data);
   });
