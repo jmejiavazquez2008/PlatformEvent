@@ -34,7 +34,7 @@ org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password:
   var con = client.subscribe({topic:"/event/Oppty_Test__e", isPlatformEvent: true, oauth: oauth, function(message) {
     console.log("received Oppty_Test__c");
     console.log(message);   
-  });
+  }});
 //   con.error
 //   con.on('data', function(data) {
 //     console.log('subscribed!');
