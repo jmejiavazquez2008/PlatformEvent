@@ -15,15 +15,23 @@ var io = require('socket.io')(server);
 // get a reference to the socket once a client connects
 var socket = io.sockets.on('connection', function (socket) { });
 
+let SF_CLIENT_ID = process.env.SF_CLIENT_ID;
+let SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET;
+let SF_USER_NAME = process.env.SF_USER_NAME;
+let SF_USER_PASSWORD = process.env.SF_USER_PASSWORD;
+let SF_SECURITY_TOKEN = process.env.SF_SECURITY_TOKEN;
+
 var org = nforce.createConnection({
-  clientId: '3MVG9Vik22TUgUpheZzEWUZ9QDnGeMnM8OGZBaUuUXdFQvKfvju4EoT9hS1jgUQpO9pbtIxk37dIIn0thfEMF',
-  clientSecret: '7984638764575275172',
+  clientId: SF_CLIENT_ID,
+  clientSecret: SF_CLIENT_SECRET,
   redirectUri: 'http://localhost:3000/oauth/_callback',
   mode: 'single',
-  environment: 'sandbox'
+  environment: 'sandbox',
+  autoRefresh: true
 });
+
 var oauth;
-org.authenticate({ username: 'jmejiavazquez@huronconsultinggroup.com', password: 'Interscope_2008', securityToken: 'JAiHQcwqEPBDHrK55V3vfEHTF' }, function(err, res) {
+org.authenticate({ username: SF_USER_NAME, password: SF_USER_PASSWORD, securityToken: SF_SECURITY_TOKEN }, function(err, res) {
 
   if(err) return console.log(err);
   oauth = res;
