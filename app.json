@@ -1,0 +1,26 @@
+{
+  "name": "PlatforEventPOC",
+  "description": "Sample application",
+  "env": {
+    "SF_CLIENT_ID": {
+        "description": "Consumer key of your Salesforce Connected App",
+        "value":""
+    },
+    "SF_CLIENT_SECRET": {
+        "description": "Consumer secret of your Salesforce Connected App",
+        "value":""
+    },
+    "SF_USER_NAME": {
+        "description": "Salesforce username for your integration user",
+        "value":""
+    },
+    "SF_USER_PASSWORD": {
+        "description": "Salesforce password for your integration user",
+        "value":""
+    },
+    "SF_SECURITY_TOKEN": {
+        "description": "User's security token",
+        "value":""
+    }
+  }
+}
