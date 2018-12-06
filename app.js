@@ -39,6 +39,8 @@ org.authenticate({ username: SF_USER_NAME, password: SF_USER_PASSWORD, securityT
     console.log('*** Successfully connected to Salesforce ***');
   }
   var client = org.createStreamClient();
+  
+  //subscribe to oppty event
   var con = client.subscribe({topic:"event/Oppty_Test__e", isEvent: true, oauth: oauth});
   
   con.on('connect', function(){
@@ -48,30 +50,35 @@ org.authenticate({ username: SF_USER_NAME, password: SF_USER_PASSWORD, securityT
     console.log('error received from topic: ' + error);
   });
   con.on('data', function(data) {
-    console.log('received following from topic---');
+    console.log('received following from Oppty_Test__e---');
     console.log(data);
- });
-  // subscribe to platform event
-//     org.streaming.topic("/event/Oppty_Test__e").subscribe(function(message) {
-//         console.log(message);
-//    });
-  // subscribe to a pushtopic
-//   var str = org.stream({ topic: config.PUSH_TOPIC, oauth: oauth });
-
-//   str.on('connect', function(){
-//     console.log('Connected to pushtopic: ' + config.PUSH_TOPIC);
-//   });
-
-//   str.on('error', function(error) {
-//     console.log('Error received from pushtopic: ' + error);
-//   });
-
-//   str.on('data', function(data) {
-//     console.log('Received the following from pushtopic ---');
-//     console.log(data);
-//     // emit the record to be displayed on the page
-//     socket.emit('record-processed', JSON.stringify(data));
-//   });
+  });
+  // subscribe to line item event
+  var con1 = client.subscribe({topic:"event/Opportunity_Line_Item_Test__e", isEvent: true, oauth: oauth});
+  
+  con1.on('connect', function(){
+    console.log('connected to topic: Opportunity_Line_Item_Test__e');
+  });
+  con1.on('error', function(error){
+    console.log('error received from topic: ' + error);
+  });
+  con1.on('data', function(data) {
+    console.log('received following from Opportunity_Line_Item_Test__e---');
+    console.log(data);
+  });
+    //subscribe to subscription event
+  var con2 = client.subscribe({topic:"event/Subscription_Test__e", isEvent: true, oauth: oauth});
+  
+  con2.on('connect', function(){
+    console.log('connected to topic: Subscription_Test__e');
+  });
+  con2.on('error', function(error){
+    console.log('error received from topic: ' + error);
+  });
+  con2.on('data', function(data) {
+    console.log('received following from Subscription_Test__e---');
+    console.log(data);
+  });
 
 });
 
@@ -84,8 +91,6 @@ app.use(function(req, res, next){
   next();
 });
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
